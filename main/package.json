@@ -1,0 +1,11 @@
+{
+	"name": "grado-app",
+	"main": "main.html",
+	"description": "Grading System Application",
+	"author": "Richeve S. Bebedor",
+	"version": "0.1.0",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/volkovasystems/grado-app.git"
+	}
+}

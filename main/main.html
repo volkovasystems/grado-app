@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Loading...</title>
+		<script type="text/javascript">
+			var gradoServer = require( "./server/grado-server.js" );
+			gradoServer.start( );
+			setTimeout( function redirect( ){
+				window.location = "https://127.0.0.1:" + gradoeServer.getUsedPort( );
+			}, 1000 );
+		</script>
+	</head>
+</html>
