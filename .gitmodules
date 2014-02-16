@@ -7,3 +7,6 @@
 [submodule "node_modules"]
 	path = node_modules
 	url = https://github.com/volkovasystems/node_modules.git
+[submodule "half-page"]
+	path = half-page
+	url = https://github.com/volkovasystems/half-page.git
