@@ -1,47 +1,52 @@
 module.exports = function gruntConfiguration( grunt ){
 	grunt.initConfig( {
+		"pkg": grunt.file.readJSON( "./main/package.json" ),
 		"copy": {
 			"main": {
 				"files": [
 					{
 						"expand": true,
 						"src": "./adaptable/**",
-						"dest": "./staging/adaptable"		
+						"dest": "./staging"		
 					},
 					{
 						"expand": true,
 						"src": "./library/**",
-						"dest": "./staging/library"		
+						"dest": "./staging"		
 					},
 					{
 						"expand": true,
 						"src": "./node_modules/**",
-						"dest": "./staging/node_modules"		
+						"dest": "./staging"		
 					},
 					{
 						"expand": true,
 						"src": "./script/**",
-						"dest": "./staging/script"
+						"dest": "./staging"
 					},
 					{
+						"flatten": true,
 						"expand": true,
-						"src": "./main/**",
+						"src": "./main/*",
 						"dest": "./staging"
 					}
 				]
 			}
 		},
-		"node-webkit": {
+		"nodewebkit": {
 			"options": {
 				"build_dir": "./build",
-				"win": true	
+				"win": true,
+				"mac": false,
+				"linux32": false,
+				"linux64": false
 			},
-			"src": [ "./*" ]
+			"src": [ "./staging/**" ]
 		}
 	} );
 	
 	grunt.loadNpmTasks( "grunt-contrib-copy" );
 	grunt.loadNpmTasks( "grunt-node-webkit-builder" );
 
-	grunt.registerTask( "default", [ "copy"/*, "node-webkit"*/ ] )
+	grunt.registerTask( "default", [ "copy", "nodewebkit" ] )
 };

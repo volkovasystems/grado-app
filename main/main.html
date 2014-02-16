@@ -1,13 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 		<title>Loading...</title>
 		<script type="text/javascript">
-			var gradoServer = require( "./server/grado-server.js" );
-			gradoServer.start( );
-			setTimeout( function redirect( ){
-				window.location = "https://127.0.0.1:" + gradoeServer.getUsedPort( );
-			}, 1000 );
+			//Start the local server.
+			var environment = "node-webkit";
+			try{
+				( function module( ){
+					//Open directly the debugger.
+					require( "nw.gui" ).Window.get( ).showDevTools( );
+
+					var currentDirectoryPath = process.cwd( );
+					var path = require( "path" );
+					var gradoServerPath = "/script/server/grado-server.js".replace( "/", path.sep );
+					var gradoServer = require( currentDirectoryPath + gradoServerPath );
+					gradoServer.start( function callback( ){
+						console.log( "Listening to grado server." );
+						window.localServerPort = gradoServer.getUsedPort( );
+					} );
+				} )( );	
+			}catch( error ){
+				console.log( "non-node-webkit environment detected" );
+				//TODO: Do something about it.
+				environment = "browser"; 
+			}
+		</script>
+		<script type="text/javascript" id="script-reference">
+			setTimeout( function load( ){
+				var scriptReferenceNode = document.getElementById( "script-reference" );
+				switch( environment ){
+					case "node-webkit":
+						var requirejsScriptLoaderNode = document.createElement( "script" );
+						requirejsScriptLoaderNode.setAttribute( "type", "text/javascript" );
+						requirejsScriptLoaderNode.setAttribute( "data-main",
+							"http://127.0.0.1:" + localServerPort + "/static/main.js" );
+						requirejsScriptLoaderNode.setAttribute( "src",
+							"http://127.0.0.1:" + localServerPort + "/static/library/require/require.js" );
+						scriptReferenceNode.parentNode.insertBefore( requirejsScriptLoaderNode, scriptReferenceNode );
+						break;
+					
+					case "browser":
+						
+						break;
+
+					default:
+				}
+			}, 0 );
 		</script>
 	</head>
+	<body>
+		
+	</body>
 </html>
