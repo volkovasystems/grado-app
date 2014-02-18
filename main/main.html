@@ -12,17 +12,23 @@
 
 					var currentDirectoryPath = process.cwd( );
 					var path = require( "path" );
+					var Q = require( "kew" );
 					var gradoServerPath = "/script/server/grado-server.js".replace( "/", path.sep );
 					var gradoServer = require( currentDirectoryPath + gradoServerPath );
+					var contract = Q.defer( );
 					gradoServer.start( function callback( ){
 						console.log( "Listening to grado server." );
-						window.localServerPort = gradoServer.getUsedPort( );
+						var port = gradoServer.getUsedPort( );
+						window.staticBaseURL = "http://127.0.0.1:" + port + "/static";
+						window.localServerPort = port
+						contract.resolve( );
 					} );
+					window.onServerLoad = contract.promise;
 				} )( );	
 			}catch( error ){
 				console.log( "non-node-webkit environment detected" );
 				//TODO: Do something about it.
-				environment = "browser"; 
+				environment = "browser";
 			}
 		</script>
 		<script type="text/javascript" id="script-reference">
@@ -30,13 +36,15 @@
 				var scriptReferenceNode = document.getElementById( "script-reference" );
 				switch( environment ){
 					case "node-webkit":
-						var requirejsScriptLoaderNode = document.createElement( "script" );
-						requirejsScriptLoaderNode.setAttribute( "type", "text/javascript" );
-						requirejsScriptLoaderNode.setAttribute( "data-main",
-							"http://127.0.0.1:" + localServerPort + "/static/main.js" );
-						requirejsScriptLoaderNode.setAttribute( "src",
-							"http://127.0.0.1:" + localServerPort + "/static/library/require/require.js" );
-						scriptReferenceNode.parentNode.insertBefore( requirejsScriptLoaderNode, scriptReferenceNode );
+						onServerLoad.then( function loadScript( ){
+							var requirejsScriptLoaderNode = document.createElement( "script" );
+							requirejsScriptLoaderNode.setAttribute( "type", "text/javascript" );
+							requirejsScriptLoaderNode.setAttribute( "data-main",
+								"http://127.0.0.1:" + localServerPort + "/static/main.js" );
+							requirejsScriptLoaderNode.setAttribute( "src",
+								"http://127.0.0.1:" + localServerPort + "/static/library/require/require.js" );
+							scriptReferenceNode.parentNode.insertBefore( requirejsScriptLoaderNode, scriptReferenceNode );
+						} );
 						break;
 					
 					case "browser":

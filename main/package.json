@@ -7,5 +7,23 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/volkovasystems/grado-app.git"
+	},
+	"script": "/script",
+	"library": {
+		"jquery": "/library/jquery/jquery",
+		"angular": "/library/angular/angular",
+		"absurd": "/library/absurd/absurd",
+		"amplify": "/library/amplify/amplify",
+		"underscore": "/library/underscore/underscore",
+		"domo": "/library/domo/domo",
+		"requirejs": "/library/require/require",
+		"string": "/library/string/string",
+		"chance": "/library/chance/chance",
+		"arbiter": "/library/arbiter/Arbiter",
+		"async": "/library/async/async"
+	},
+	"submodule": {
+		"adaptable": "/adaptable/adaptable",
+		"halfpage": "/half-page/half-page"		
 	}
 }

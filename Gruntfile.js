@@ -1,12 +1,18 @@
 module.exports = function gruntConfiguration( grunt ){
+	var packageData = grunt.file.readJSON( "./main/package.json" );
 	grunt.initConfig( {
-		"pkg": grunt.file.readJSON( "./main/package.json" ),
+		"pkg": packageData,
 		"copy": {
 			"main": {
 				"files": [
 					{
 						"expand": true,
 						"src": "./adaptable/**",
+						"dest": "./staging"		
+					},
+					{
+						"expand": true,
+						"src": "./half-page/**",
 						"dest": "./staging"		
 					},
 					{
@@ -48,5 +54,25 @@ module.exports = function gruntConfiguration( grunt ){
 	grunt.loadNpmTasks( "grunt-contrib-copy" );
 	grunt.loadNpmTasks( "grunt-node-webkit-builder" );
 
-	grunt.registerTask( "default", [ "copy", "nodewebkit" ] )
+	grunt.registerTask( "convert-package-json",
+		"Convert package.json to package.js",
+		function construct( ){
+			var fs = require( "fs" );
+			
+			var template = "define( \"packageInfo\", function construct( ){ return <packageData>; } );";
+			fs.writeFileSync( "./staging/package.js", 
+				template.replace( "<packageData>", JSON.stringify( packageData, null, "\t" ) ) );
+
+			var isConverted = fs.existsSync( "./staging/package.js" );
+			console.log( "Package.json file converted? " + isConverted );
+			
+			return isConverted;
+		} );
+
+	grunt.registerTask( "default",
+		[ 
+			"copy", 
+			"convert-package-json",
+			"nodewebkit" 
+		] );
 };
