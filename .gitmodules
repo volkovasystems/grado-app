@@ -10,3 +10,15 @@
 [submodule "half-page"]
 	path = half-page
 	url = https://github.com/volkovasystems/half-page.git
+[submodule "ng-safe-apply"]
+	path = ng-safe-apply
+	url = https://github.com/volkovasystems/ng-safe-apply.git
+[submodule "ng-bind-dom"]
+	path = ng-bind-dom
+	url = https://github.com/volkovasystems/ng-bind-dom.git
+[submodule "absurd-compiler"]
+	path = absurd-compiler
+	url = https://github.com/volkovasystems/absurd-compiler.git
+[submodule "absurd-reset"]
+	path = absurd-reset
+	url = https://github.com/volkovasystems/absurd-reset.git

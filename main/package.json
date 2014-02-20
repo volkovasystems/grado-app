@@ -23,7 +23,11 @@
 		"async": "/library/async/async"
 	},
 	"submodule": {
+		"absurdReset": "/absurd-reset/absurd-reset",
+		"absurdCompiler": "/absurd-compiler/absurd-compiler",
+		"safeApply": "/ng-safe-apply/safe-apply-factory",
+		"bindDOM": "/ng-bind-dom/bind-dom-factory",
 		"adaptable": "/adaptable/adaptable",
-		"halfpage": "/half-page/half-page"		
+		"halfpage": "/half-page/half-page"
 	}
 }
