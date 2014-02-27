@@ -13,14 +13,15 @@
 					var currentDirectoryPath = process.cwd( );
 					var path = require( "path" );
 					var Q = require( "kew" );
-					var gradoServerPath = "/script/server/grado-server.js".replace( "/", path.sep );
+					var gradoServerPath = "/server/grado-server.js".replace( "/", path.sep );
 					var gradoServer = require( currentDirectoryPath + gradoServerPath );
 					var contract = Q.defer( );
 					gradoServer.start( function callback( ){
 						console.log( "Listening to grado server." );
 						var port = gradoServer.getUsedPort( );
-						window.staticBaseURL = "http://127.0.0.1:" + port + "/static";
-						window.localServerPort = port
+						window.baseURL = "http://127.0.0.1:" + port;
+						window.staticBaseURL = baseURL + "/static";
+						window.localServerPort = port;
 						contract.resolve( );
 					} );
 					window.onServerLoad = contract.promise;
@@ -40,9 +41,9 @@
 							var requirejsScriptLoaderNode = document.createElement( "script" );
 							requirejsScriptLoaderNode.setAttribute( "type", "text/javascript" );
 							requirejsScriptLoaderNode.setAttribute( "data-main",
-								"http://127.0.0.1:" + localServerPort + "/static/main.js" );
+								staticBaseURL + "/main.js" );
 							requirejsScriptLoaderNode.setAttribute( "src",
-								"http://127.0.0.1:" + localServerPort + "/static/library/require/require.js" );
+								staticBaseURL + "/library/require/require.js" );
 							scriptReferenceNode.parentNode.insertBefore( requirejsScriptLoaderNode, scriptReferenceNode );
 						} );
 						break;
