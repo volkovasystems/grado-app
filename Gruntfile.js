@@ -2,9 +2,20 @@ module.exports = function gruntConfiguration( grunt ){
 	var packageData = grunt.file.readJSON( "./main/package.json" );
 	grunt.initConfig( {
 		"pkg": packageData,
+		"clean": {
+			"options": {
+				"force": true
+			},
+			"src": [ "./staging" ]
+		},
 		"copy": {
 			"main": {
 				"files": [
+					{
+						"expand": true,
+						"src": "./class-contract/**",
+						"dest": "./staging"
+					},
 					{
 						"expand": true,
 						"src": "./absurd-compiler/**",
@@ -23,6 +34,11 @@ module.exports = function gruntConfiguration( grunt ){
 					{
 						"expand": true,
 						"src": "./ng-safe-apply/**",
+						"dest": "./staging"
+					},
+					{
+						"expand": true,
+						"src": "./ng-auto-resize/**",
 						"dest": "./staging"
 					},
 					{
@@ -76,19 +92,42 @@ module.exports = function gruntConfiguration( grunt ){
 		}
 	} );
 	
+	grunt.loadNpmTasks( "grunt-contrib-clean" );
 	grunt.loadNpmTasks( "grunt-contrib-copy" );
 	grunt.loadNpmTasks( "grunt-node-webkit-builder" );
 
-	grunt.registerTask( "remove-stage-files",
-		"Remove all stage files for building.",
+	grunt.registerTask( "collect-script-files",
+		"Collect all application specific files.",
 		function construct( ){
-			grunt.log.writeln( "Removing all stage files." );
-			//TODO: Do something here.
+			grunt.log.writeln( "Collecting script files." );
+			var fs = require( "fs" );
+			var path = require( "path" );
+			var S = require( "string" );
+
+			var scriptPath = "." + packageData.scriptPath.replace( "/", path.sep );
+			var fileList = fs.readdirSync( scriptPath );
+			var scriptList = { };
+			for( var index = 0; index < fileList.length; index++ ){
+				var scriptFile = fileList[ index ].replace( ".js", "" );
+				var scriptName = S( scriptFile ).camelize( ).toString( );
+				scriptList[ scriptName ] = "/script/" + scriptFile;
+			}
+			packageData.script = scriptList;
+			packageDataPath = "./main/package.json".replace( "/", path.sep );
+			try{
+				fs.writeFileSync( packageDataPath, JSON.stringify( packageData, null, "\t" ) );
+				grunt.log.writeln( "Script files collected." );
+				return true;
+			}catch( error ){
+				grunt.log.writeln( "Collecting script files failed." );
+				return false;
+			}
 		} );
 
 	grunt.registerTask( "convert-package-json",
 		"Convert package.json to package.js",
 		function construct( ){
+			grunt.task.requires( "collect-script-files" );
 			grunt.log.writeln( "Converting package.json to package.js" );
 			var fs = require( "fs" );
 			
@@ -108,7 +147,9 @@ module.exports = function gruntConfiguration( grunt ){
 
 	grunt.registerTask( "default",
 		[ 
+			"clean",
 			"copy", 
+			"collect-script-files",
 			"convert-package-json",
 			"nodewebkit" 
 		] );

@@ -22,3 +22,9 @@
 [submodule "absurd-reset"]
 	path = absurd-reset
 	url = https://github.com/volkovasystems/absurd-reset.git
+[submodule "ng-auto-resize"]
+	path = ng-auto-resize
+	url = https://github.com/volkovasystems/ng-auto-resize.git
+[submodule "class-contract"]
+	path = class-contract
+	url = https://github.com/volkovasystems/class-contract.git

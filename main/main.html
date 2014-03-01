@@ -4,7 +4,7 @@
 		<title>Loading...</title>
 		<script type="text/javascript">
 			//Start the local server.
-			var environment = "node-webkit";
+			window.environment = "node-webkit";
 			try{
 				( function module( ){
 					//Open directly the debugger.
@@ -44,7 +44,8 @@
 								staticBaseURL + "/main.js" );
 							requirejsScriptLoaderNode.setAttribute( "src",
 								staticBaseURL + "/library/require/require.js" );
-							scriptReferenceNode.parentNode.insertBefore( requirejsScriptLoaderNode, scriptReferenceNode );
+							scriptReferenceNode.parentNode
+								.insertBefore( requirejsScriptLoaderNode, scriptReferenceNode );
 						} );
 						break;
 					
@@ -59,7 +60,7 @@
 	</head>
 	<body>
 		<div id="half-page-component">
-			<div half-page></div>
+			<div half-page auto-resize></div>
 		</div>
 	</body>
 </html>
