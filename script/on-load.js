@@ -3,14 +3,9 @@ define( "onLoad",
 		"absurdReset",
 		"halfpage"
 	],
-	function construct( absurdResetContract ){
+	function construct( absurdReset ){
 		var onLoad = function onLoad( ){
-			absurdResetContract.onAgree( function handler( ){
-				console.log( "Absurd reset loaded." );
-				absurdReset( );
-			} );
-			console.log( "onLoad loaded." );
-			console.log( "I was fucking loaded!" );
+			absurdReset( );
 		};
 		return onLoad;
 	} );
