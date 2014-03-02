@@ -25,9 +25,6 @@
 [submodule "ng-auto-resize"]
 	path = ng-auto-resize
 	url = https://github.com/volkovasystems/ng-auto-resize.git
-[submodule "class-contract"]
-	path = class-contract
-	url = https://github.com/volkovasystems/class-contract.git
 [submodule "force-auto-resize"]
 	path = force-auto-resize
 	url = https://github.com/volkovasystems/force-auto-resize.git

@@ -29,7 +29,8 @@
 		"bindDOMFactory": "/ng-bind-dom/bind-dom-factory",
 		"adaptable": "/adaptable/adaptable",
 		"halfpage": "/half-page/half-page",
-		"Contract": "/class-contract/class-contract"
+		"autoResizeDirective": "/ng-auto-resize/auto-resize-directive",
+		"forceAutoResize": "/force-auto-resize/force-auto-resize"
 	},
 	"script": {
 		"onLoad": "/script/on-load"

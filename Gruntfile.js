@@ -13,6 +13,11 @@ module.exports = function gruntConfiguration( grunt ){
 				"files": [
 					{
 						"expand": true,
+						"src": "./force-auto-resize/**",
+						"dest": "./staging"
+					},
+					{
+						"expand": true,
 						"src": "./class-contract/**",
 						"dest": "./staging"
 					},
