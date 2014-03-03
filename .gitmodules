@@ -28,3 +28,9 @@
 [submodule "force-auto-resize"]
 	path = force-auto-resize
 	url = https://github.com/volkovasystems/force-auto-resize.git
+[submodule "ng-app-determine"]
+	path = ng-app-determine
+	url = https://github.com/volkovasystems/ng-app-determine.git
+[submodule "domo-stringify"]
+	path = domo-stringify
+	url = https://github.com/volkovasystems/domo-stringify.git

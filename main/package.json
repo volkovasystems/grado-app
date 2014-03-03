@@ -23,6 +23,7 @@
 		"async": "/library/async/async"
 	},
 	"submodule": {
+		"appDetermine": "/ng-app-determine/app-determine",
 		"absurdReset": "/absurd-reset/absurd-reset",
 		"absurdCompiler": "/absurd-compiler/absurd-compiler",
 		"safeApplyFactory": "/ng-safe-apply/safe-apply-factory",
