@@ -23,6 +23,13 @@
 		"async": "/library/async/async"
 	},
 	"submodule": {
+		"pageGroup": "/page-group/page-group",
+		"page": "/page/page",
+		"checkZIndexLevels": "/check-zindex-levels/check-zindex-levels",
+		"computeNextZIndex": "/compute-next-zindex/compute-next-zindex",
+		"reduceZIndexLevels": "/reduce-zindex-levels/reduce-zindex-levels",
+		"onRender": "/ng-on-render/on-render",
+		"domoStringify": "/domo-stringify/domo-stringify",
 		"appDetermine": "/ng-app-determine/app-determine",
 		"absurdReset": "/absurd-reset/absurd-reset",
 		"absurdCompiler": "/absurd-compiler/absurd-compiler",

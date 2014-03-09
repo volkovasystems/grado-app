@@ -13,6 +13,41 @@ module.exports = function gruntConfiguration( grunt ){
 				"files": [
 					{
 						"expand": true,
+						"src": "./page-group/**",
+						"dest": "./staging"
+					},
+					{
+						"expand": true,
+						"src": "./page/**",
+						"dest": "./staging"
+					},
+					{
+						"expand": true,
+						"src": "./compute-next-zindex/**",
+						"dest": "./staging"
+					},
+					{
+						"expand": true,
+						"src": "./check-zindex-levels/**",
+						"dest": "./staging"
+					},
+					{
+						"expand": true,
+						"src": "./reduce-zindex-levels/**",
+						"dest": "./staging"
+					},
+					{
+						"expand": true,
+						"src": "./ng-on-render/**",
+						"dest": "./staging"
+					},
+					{
+						"expand": true,
+						"src": "./domo-stringify/**",
+						"dest": "./staging"
+					},
+					{
+						"expand": true,
 						"src": "./ng-app-determine/**",
 						"dest": "./staging"
 					},

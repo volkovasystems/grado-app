@@ -34,3 +34,21 @@
 [submodule "domo-stringify"]
 	path = domo-stringify
 	url = https://github.com/volkovasystems/domo-stringify.git
+[submodule "ng-on-render"]
+	path = ng-on-render
+	url = https://github.com/volkovasystems/ng-on-render.git
+[submodule "page"]
+	path = page
+	url = https://github.com/volkovasystems/page.git
+[submodule "page-group"]
+	path = page-group
+	url = https://github.com/volkovasystems/page-group.git
+[submodule "compute-next-zindex"]
+	path = compute-next-zindex
+	url = https://github.com/volkovasystems/compute-next-zindex.git
+[submodule "check-zindex-levels"]
+	path = check-zindex-levels
+	url = https://github.com/volkovasystems/check-zindex-levels.git
+[submodule "reduce-zindex-levels"]
+	path = reduce-zindex-levels
+	url = https://github.com/volkovasystems/reduce-zindex-levels.git
