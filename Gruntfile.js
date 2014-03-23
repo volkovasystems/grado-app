@@ -13,6 +13,11 @@ module.exports = function gruntConfiguration( grunt ){
 				"files": [
 					{
 						"expand": true,
+						"src": "./arbiter-module-loader/**",
+						"dest": "./staging"
+					},
+					{
+						"expand": true,
 						"src": "./page-group/**",
 						"dest": "./staging"
 					},

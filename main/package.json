@@ -23,6 +23,7 @@
 		"async": "/library/async/async"
 	},
 	"submodule": {
+		"moduleLoader": "/arbiter-module-loader/arbiter-module-loader",
 		"pageGroup": "/page-group/page-group",
 		"page": "/page/page",
 		"checkZIndexLevels": "/check-zindex-levels/check-zindex-levels",
