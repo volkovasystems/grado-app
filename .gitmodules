@@ -52,6 +52,3 @@
 [submodule "reduce-zindex-levels"]
 	path = reduce-zindex-levels
 	url = https://github.com/volkovasystems/reduce-zindex-levels.git
-[submodule "arbiter-module-loader"]
-	path = arbiter-module-loader
-	url = https://github.com/volkovasystems/arbiter-module-loader.git
