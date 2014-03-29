@@ -7,7 +7,7 @@ define( "onLoad",
 	],
 	function construct( async,
 						absurdResetModuleLoad,
-						halfpageModuleLoad )
+						halfpageModule )
 	{
 		var onLoad = function onLoad( ){
 			async.series( [
@@ -36,7 +36,7 @@ define( "onLoad",
 						Initiate the navigation system.
 					*/
 					function onHalfpageLoad( callback ){
-						halfpageModuleLoad( function handler( ){
+						halfpageModule( function handler( ){
 							var gradoHalfPage = new HalfPage( );
 							gradoHalfPage.attachComponent( "grado-half-page-component" );
 							callback( );
@@ -48,7 +48,7 @@ define( "onLoad",
 					*/
 				],
 				function finalHandler( ){
-					appDetermine.bootstrap( );
+					//When all things are loaded. Do post loading.
 				} );
 		};
 		return onLoad;

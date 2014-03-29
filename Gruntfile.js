@@ -13,7 +13,7 @@ module.exports = function gruntConfiguration( grunt ){
 				"files": [
 					{
 						"expand": true,
-						"src": "./arbiter-module-loader/**",
+						"src": "./arbiter-module-load-notifier/**",
 						"dest": "./staging"
 					},
 					{
