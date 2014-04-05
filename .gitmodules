@@ -55,3 +55,21 @@
 [submodule "arbiter-module-load-notifier"]
 	path = arbiter-module-load-notifier
 	url = https://github.com/volkovasystems/arbiter-module-load-notifier.git
+[submodule "harden-property"]
+	path = harden-property
+	url = https://github.com/volkovasystems/harden-property.git
+[submodule "class-initiateable"]
+	path = class-initiateable
+	url = https://github.com/volkovasystems/class-initiateable.git
+[submodule "prompt"]
+	path = prompt
+	url = https://github.com/volkovasystems/prompt.git
+[submodule "arguments-to-array"]
+	path = arguments-to-array
+	url = https://github.com/volkovasystems/arguments-to-array.git
+[submodule "bind-class"]
+	path = bind-class
+	url = https://github.com/volkovasystems/bind-class.git
+[submodule "create-class"]
+	path = create-class
+	url = https://github.com/volkovasystems/create-class.git
